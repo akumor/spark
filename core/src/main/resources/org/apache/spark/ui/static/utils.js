@@ -96,20 +96,6 @@ function formatLogsCells(execLogs, type) {
 }
 
 function getStandAloneAppId(cb) {
-  var words = getBaseURI().split('/');
-  var ind = words.indexOf("proxy");
-  var appId;
-  if (ind > 0) {
-    appId = words[ind + 1];
-    cb(appId);
-    return;
-  }
-  ind = words.indexOf("history");
-  if (ind > 0) {
-    appId = words[ind + 1];
-    cb(appId);
-    return;
-  }
   // Looks like Web UI is running in standalone mode
   // Let's get application-id using REST End Point
   $.getJSON(uiRoot + "/api/v1/applications", function(response, status, jqXHR) {
